@@ -1,0 +1,67 @@
+DROP SCHEMA IF EXISTS TaskList;
+CREATE SCHEMA TaskList;
+USE TaskList;
+
+DROP TABLE IF EXISTS Users;
+CREATE TABLE Users (
+	id CHAR(36) PRIMARY KEY NOT NULL,
+    display_name VARCHAR(40) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    hashed VARCHAR(80),
+    is_visible TINYINT(1) DEFAULT 1,
+	created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+DROP TABLE IF EXISTS Categories;
+CREATE TABLE Categories (
+	id CHAR(36) PRIMARY KEY NOT NULL,
+    name VARCHAR(40) NOT NULL
+);
+
+DROP TABLE IF EXISTS Tasks;
+CREATE TABLE Tasks (
+	id CHAR(36) PRIMARY KEY NOT NULL,
+    name VARCHAR(128) NOT NULL,
+    description VARCHAR(512),
+    user_id CHAR(36) NOT NULL,
+    complete_by VARCHAR(20),
+    is_completed TINYINT(1) DEFAULT 0,
+    completed_at VARCHAR(20),
+    is_visible TINYINT(1) DEFAULT 1,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES Users(id)
+);
+
+DROP TABLE IF EXISTS TaskCategories;
+CREATE TABLE TaskCategories (
+	task_id CHAR(36) NOT NULL,
+    category_id CHAR(36) NOT NULL,
+    FOREIGN KEY (task_id) REFERENCES Tasks(id),
+    FOREIGN KEY (category_id) REFERENCES Categories(id)
+);
+
+DROP TABLE IF EXISTS Lists;
+CREATE TABLE Lists (
+	id CHAR(36) PRIMARY KEY NOT NULL,
+    name VARCHAR(40) NOT NULL,
+    description VARCHAR(512),
+    user_id CHAR(36) NOT NULL,
+    complete_by VARCHAR(20),
+    is_completed TINYINT(1) DEFAULT 0,
+    completed_at VARCHAR(20),
+    is_visible TINYINT(1) DEFAULT 1,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES Users(id)
+);
+
+DROP TABLE IF EXISTS ListTasks;
+CREATE TABLE ListsTasks (
+	task_id CHAR(36) NOT NULL,
+    list_id CHAR(36) NOT NULL,
+    FOREIGN KEY (task_id) REFERENCES Tasks(id),
+    FOREIGN KEY (list_id) REFERENCES Lists(id)
+);
+
