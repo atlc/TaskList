@@ -1,13 +1,11 @@
 import { Router } from 'express';
-import listsRouter from './lists';
-import tasksRouter from './tasks';
-
+import categoriesRouter from './categories';
+import statusesRouter from './statuses';
 
 const router = Router();
 
-router.use('/lists', listsRouter);
-router.use('/tasks', tasksRouter);
-
+router.use('/categories', categoriesRouter);
+router.use('/statuses', statusesRouter);
 
 router.get('*', (req, res) => res.json(`404, you fucking idiot. Don't go to ${req.originalUrl} again.`));
 

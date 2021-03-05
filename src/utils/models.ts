@@ -13,7 +13,9 @@ export interface Task {
     name: string;
     description: string;
     user_id: User["id"];
+    status_id: Status["id"];
     complete_by: string;
+    is_late: boolean;
     is_completed: boolean;
     completed_at: string;
     is_visible: string;
@@ -21,22 +23,27 @@ export interface Task {
     updated_at: string;
 }
 
-export interface List {
+// export interface List {
+//     id: string;
+//     name: string;
+//     description: string;
+//     user_id: User["id"];
+//     complete_by: string;
+//     is_completed: boolean;
+//     completed_at: string;
+//     is_visible: string;
+//     created_at: string;
+//     updated_at: string;
+// }
+
+// export interface ListTask {
+//     task_id: Task["id"];
+//     list_id: List["id"];
+// }
+
+export interface Status {
     id: string;
     name: string;
-    description: string;
-    user_id: User["id"];
-    complete_by: string;
-    is_completed: boolean;
-    completed_at: string;
-    is_visible: string;
-    created_at: string;
-    updated_at: string;
-}
-
-export interface ListTask {
-    task_id: Task["id"];
-    list_id: List["id"];
 }
 
 export interface Category {
