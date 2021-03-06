@@ -12,7 +12,7 @@ app.use(compression());
 app.use(morgan('dev'));
 app.use(routes);
 
-// app.get(*, res.send HOME )
+// app.get(*, res.send HOME ) // API is possibly going to remain decoupled
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log('\x1b[5m\x1b[36m', `---\t---\tServer now running on :${port}\t---\t---`))

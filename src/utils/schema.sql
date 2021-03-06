@@ -7,11 +7,13 @@ CREATE TABLE Users (
 	id CHAR(36) PRIMARY KEY NOT NULL,
     display_name VARCHAR(40) UNIQUE NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
-    hashed VARCHAR(80),
+    hashed VARCHAR(80) NOT NULL,
     is_visible TINYINT(1) DEFAULT 1,
 	created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+INSERT INTO Users SET `id` = 'afeeba7f-e446-4c40-892f-3e9a749c6d5d', `display_name` = 'atlc', `email` = 'test@test.com', `hashed` = 'hunter2';
+SELECT * FROM Users;
 
 DROP TABLE IF EXISTS Categories;
 CREATE TABLE Categories (
@@ -44,7 +46,7 @@ CREATE TABLE Tasks (
     name VARCHAR(128) NOT NULL,
     description VARCHAR(512),
     user_id CHAR(36) NOT NULL,
-    status_id VARCHAR(32) NOT NULL,
+    status_id VARCHAR(36) NOT NULL,
     complete_by VARCHAR(20),
     is_late TINYINT(1) DEFAULT 0,
     is_completed TINYINT(1) DEFAULT 0,
@@ -55,6 +57,8 @@ CREATE TABLE Tasks (
     FOREIGN KEY (user_id) REFERENCES Users(id),
     FOREIGN KEY (status_id) REFERENCES Statuses(id)
 );
+INSERT INTO Tasks SET `id` = 'dc970ae0-68a6-40c3-af1a-38e927a6c93e', `name` = 'TaskTest', `description` = 'Description lol', `user_id` = 'afeeba7f-e446-4c40-892f-3e9a749c6d5d', `status_id` = '92cbb230-c95d-4763-a9ed-05c8b9f1fdbb';
+SELECT * FROM Tasks;
 
 
 
@@ -89,3 +93,5 @@ CREATE TABLE TaskCategories (
 --     FOREIGN KEY (list_id) REFERENCES Lists(id)
 -- );
 
+
+INSERT INTO Tasks SET `id` = 'b8fb5980-f437-4ee8-9f3b-5416591be87a', `name` = 'TaskTest', `description` = 'Description lol', `user_id` = '92cbb230-c95d-4763-a9ed-05c8b9f1fdbb', `status_id` = '92cbb230-c95d-4763-a9ed-05c8b9f1fdbb'

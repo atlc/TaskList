@@ -24,10 +24,12 @@ export {
     Query
 }
 
+import tasks from './queries/tasks';
 import statuses from './queries/statuses';
 import categories from './queries/categories';
 
 export {
+    tasks,
     statuses,
     categories
 }
