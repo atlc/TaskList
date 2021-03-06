@@ -1,11 +1,11 @@
 export interface User {
     id: string;
-    display_name: string;
+    username: string;
     email: string;
     hashed: string;
-    is_visible: boolean;
-    created_at: string;
-    updated_at: string;
+    is_visible?: boolean;
+    created_at?: string;
+    updated_at?: string;
 }
 
 export interface Task {

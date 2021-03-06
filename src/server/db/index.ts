@@ -27,9 +27,11 @@ export {
 import tasks from './queries/tasks';
 import statuses from './queries/statuses';
 import categories from './queries/categories';
+import users from './queries/users';
 
 export {
     tasks,
     statuses,
-    categories
+    categories,
+    users
 }
