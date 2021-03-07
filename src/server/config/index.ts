@@ -14,3 +14,7 @@ export const jwt = {
     secret: process.env.JWT_SECRET,
     expiration: process.env.JWT_EXPIRY
 }
+
+export const redis = {
+    port: process.env.REDIS_PORT
+}

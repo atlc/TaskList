@@ -1,16 +1,23 @@
-import { doesNotMatch } from 'assert';
 import { Router } from 'express';
+const jwtr = require('jwt-redis').default;
 import * as passport from 'passport';
 import { TokenPayload } from '../../../utils/architecture/types';
-import { destroy } from '../../../utils/security/tokens';
+import { expire } from '../../../utils/security/tokens';
 
 const router = Router();
 
-router.use((res, req, next) => {
-    passport.authenticate('jwt', (payload: TokenPayload) => {
-        destroy(payload.jti);
-        next();
-    })(res, req, next);
-})
+router.post('/', (req, res, next) => {
+    passport.authenticate('jwt', async (err, user: TokenPayload, info) => {
+        if (err) return next(err);
+
+        if (!user) {
+            res.status(401).json({ message: "You are already logged out" });
+        } else {
+            const destroyed = await expire(user);
+            
+            res.status(200).json({ message: `Logging out was ${destroyed ? '' : 'un'}successful.` });
+        }
+    })(req, res, next);
+});
 
 export default router;

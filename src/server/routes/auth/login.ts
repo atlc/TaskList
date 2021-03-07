@@ -10,7 +10,7 @@ router.post('/', passport.authenticate('local'), async (req: RequestUser, res) =
     try {
         const { id, username } = req.user;
         const jti = uuid(); // Unique ID for this token for jwt-redis to be able to destroy
-        const jwt = signJWT({ jti, id, username });
+        const jwt = await signJWT({ jti, id, username });  
         res.status(200).json({ token: jwt });
     } catch (error) {
         console.log(error)

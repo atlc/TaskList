@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@atlc/hibp": "^1.0.11",
+    "@atlc/hibp": "^1.1.1",
     "@types/bcrypt": "^3.0.0",
     "@types/express": "^4.17.11",
     "@types/morgan": "^1.9.2",
@@ -37,11 +37,13 @@
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "redis": "^3.0.2",
+    "redis-server": "^1.2.2",
     "sweetalert2": "^10.15.5",
     "uuidv4": "^6.2.6"
   },
   "devDependencies": {
     "nodemon": "^2.0.7",
-    "ts-node": "^9.1.1"
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
   }
 }

@@ -31,5 +31,7 @@ passport.use(new Local.Strategy(async (username, password, done) => {
 passport.use(new JWT.Strategy({
         jwtFromRequest: JWT.ExtractJwt.fromAuthHeaderAsBearerToken(),
         secretOrKey: jwt.secret
-    }, (payload: TokenPayload, done) => done(null, { ...payload }))
+    }, (payload: TokenPayload, done) => {
+        done(null, { ...payload })
+    })
 );

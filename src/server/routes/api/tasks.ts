@@ -1,10 +1,13 @@
 import { Router } from 'express';
 import { uuid } from 'uuidv4';
 import { tasks as db_tasks } from '../../db';
+import { isLoggedIn } from '../../../utils/security/roles';
 
 const router = Router();
 
-router.get('/', async (req, res) => {
+
+
+router.get('/', isLoggedIn, async (req, res) => {
     const tasks = await db_tasks.all();
     res.json(tasks);
 });
