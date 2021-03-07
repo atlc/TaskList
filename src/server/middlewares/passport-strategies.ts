@@ -1,7 +1,13 @@
-import * as Local from 'passport-local';
 import * as passport from 'passport';
-import { users as db_users, users } from '../db';
+import * as Local from 'passport-local';
+import * as JWT from 'passport-jwt';
+import { users } from '../db';
 import { validate } from '../../utils/passwords';
+import { jwt } from '../config';
+import { TokenPayload } from '../../utils/types';
+
+passport.serializeUser((user, done) => done(null, user));
+passport.deserializeUser((user, done) => done(null, user));
 
 passport.use(new Local.Strategy(async (username, password, done) => {
     try {
@@ -21,3 +27,9 @@ passport.use(new Local.Strategy(async (username, password, done) => {
         done(error);
     }
 }));
+
+passport.use(new JWT.Strategy({
+        jwtFromRequest: JWT.ExtractJwt.fromAuthHeaderAsBearerToken(),
+        secretOrKey: jwt.secret
+    }, (payload: TokenPayload, done) => done(null, { ...payload }))
+);

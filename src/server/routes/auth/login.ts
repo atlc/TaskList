@@ -1,10 +1,19 @@
 import { Router } from 'express';
 import * as passport from 'passport';
+import { RequestUser } from '../../../utils/types';
+import { signJWT } from '../../../utils/security/tokens';
 
 const router = Router();
 
-router.post('/', passport.authenticate('local'), async (req, res) => {
-    // create & return token 
+router.post('/', passport.authenticate('local'), async (req: RequestUser, res) => {
+    try {
+        const { id, username } = req.user;
+        const jwt = signJWT({ id, username });
+        res.status(200).json({ token: jwt });
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ message: "There was an error with authentication", error });
+    }
 });
 
 export default router;

@@ -3,10 +3,12 @@ import * as morgan from 'morgan';
 import * as compression from 'compression';
 import * as helmet from 'helmet';
 import routes from './routes';
+import * as passport from 'passport';
 
 
 const app = express();
 
+app.use(passport.initialize());
 app.use(express.json());
 app.use(helmet());
 app.use(compression());

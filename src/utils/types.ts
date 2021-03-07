@@ -1,3 +1,10 @@
+import { User } from './models';
+
+export interface TokenPayload {
+    id: User["id"],
+    username: User["username"]
+}
+
 export interface MySQL_Err {
     code?: string;
     errno?: number;
@@ -19,3 +26,8 @@ export interface MySQL_Success {
 }
 
 export type MySQL_Res = MySQL_Success & MySQL_Err
+
+import { Request } from 'express';
+export interface RequestUser extends Request {
+    user: User
+} 

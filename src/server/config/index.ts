@@ -9,3 +9,8 @@ export const sqlConfig = {
     host: process.env.DB_HOST,
     connections: Number(process.env.POOL_CONNECTIONS)
 }
+
+export const jwt = {
+    secret: process.env.JWT_SECRET,
+    expiration: process.env.JWT_EXPIRY
+}
