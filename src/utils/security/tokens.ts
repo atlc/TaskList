@@ -1,6 +1,6 @@
 import * as redis from 'redis';
 const JWTR = require('jwt-redis').default;
-import { jwt } from '../../server/config';
+import { jwt, redis as redis_conf } from '../../server/config';
 import { TokenPayload } from '../architecture/types';
 
 const redisClient = redis.createClient();
@@ -11,7 +11,7 @@ export const signJWT = async (payload: TokenPayload) => {
     const token = await jwtr.sign(payload, jwt.secret, { expiresIn: jwt.expiration });
     redisClient.set(jti, jti);
     // Set key to expire in 31d so it doesn't lapse before the token does
-    redisClient.expire(jti, 2678400);
+    redisClient.expire(jti, redis_conf.expiration);
 
     // redisClient.get(jti, (err, reply) => {
     //     const item = reply.toString();

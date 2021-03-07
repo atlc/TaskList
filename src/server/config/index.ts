@@ -16,5 +16,6 @@ export const jwt = {
 }
 
 export const redis = {
-    port: process.env.REDIS_PORT
+    port: process.env.REDIS_PORT,
+    expiration: Number(process.env.REDIS_EXPIRY)
 }
