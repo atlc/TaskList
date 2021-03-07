@@ -5,6 +5,6 @@ export const createHash = async (password: string) => {
     return hash(password, salt);
 }
 
-export const compareBetween = async (password: string, hashed: string) => {
+export const validate = async (password: string, hashed: string) => {
     return compare(password, hashed);
 }
