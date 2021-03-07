@@ -2,7 +2,8 @@ import { User } from './models';
 
 export interface TokenPayload {
     id: User["id"],
-    username: User["username"]
+    username: User["username"],
+    jti: string
 }
 
 export interface MySQL_Err {

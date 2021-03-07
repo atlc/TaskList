@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { uuid } from 'uuidv4';
-import { createHash } from '../../../utils/passwords';
+import { createHash } from '../../../utils/security/passwords';
 import { users } from '../../db';
 import { validate } from '@atlc/hibp';
 

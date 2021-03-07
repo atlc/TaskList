@@ -1,5 +1,5 @@
-import { Status } from '../../../utils/models';
-import { MySQL_Res } from '../../../utils/types';
+import { Status } from '../../../utils/architecture/models';
+import { MySQL_Res } from '../../../utils/architecture/types';
 import { Query } from '../../db';
 
 const add_name = (id: Status["id"], name: Status["name"]) => Query<MySQL_Res>('INSERT INTO Statuses SET ?', [{ id, name }]);

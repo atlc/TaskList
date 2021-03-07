@@ -1,5 +1,5 @@
-import { Category } from '../../../utils/models';
-import { MySQL_Res } from '../../../utils/types';
+import { Category } from '../../../utils/architecture/models';
+import { MySQL_Res } from '../../../utils/architecture/types';
 import { Query } from '../../db';
 
 const create = (id: Category["id"], name: Category["name"]) => Query<MySQL_Res>('INSERT INTO Categories SET ?', [{ id, name }]);

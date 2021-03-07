@@ -20,12 +20,14 @@
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
     "@types/react-router-dom": "^5.1.7",
+    "@types/redis": "^2.8.28",
     "@types/uuidv4": "^5.0.0",
     "bcrypt": "^5.0.1",
     "compression": "^1.7.4",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^4.4.1",
+    "jwt-redis": "^6.0.0",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "passport": "^0.4.1",
@@ -34,7 +36,12 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
+    "redis": "^3.0.2",
     "sweetalert2": "^10.15.5",
     "uuidv4": "^6.2.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "ts-node": "^9.1.1"
   }
 }

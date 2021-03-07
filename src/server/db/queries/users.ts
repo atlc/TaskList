@@ -1,5 +1,5 @@
-import { User } from '../../../utils/models';
-import { MySQL_Res } from '../../../utils/types';
+import { User } from '../../../utils/architecture/models';
+import { MySQL_Res } from '../../../utils/architecture/types';
 import { Query } from '../index';
 
 const register = (user: User) => Query<MySQL_Res>('INSERT INTO Users SET ?', [{ ...user }]);

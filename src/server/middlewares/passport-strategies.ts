@@ -2,9 +2,9 @@ import * as passport from 'passport';
 import * as Local from 'passport-local';
 import * as JWT from 'passport-jwt';
 import { users } from '../db';
-import { validate } from '../../utils/passwords';
+import { validate } from '../../utils/security/passwords';
 import { jwt } from '../config';
-import { TokenPayload } from '../../utils/types';
+import { TokenPayload } from '../../utils/architecture/types';
 
 passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((user, done) => done(null, user));
