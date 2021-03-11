@@ -7,6 +7,7 @@ const router = Router();
 router.get('/', async (req, res) => {
     try {
         const queryParams = req.query;
+        console.log(queryParams)
         if (!!Object.keys(queryParams).length) {
             const { id, name } = queryParams;
             if (id) {
@@ -16,7 +17,7 @@ router.get('/', async (req, res) => {
                 const [status] = await db_statuses.one('name', name);
                 res.json(status);
             } else {
-                throw new Error('A query parameter of either "id" or "name" must be provided');
+                res.status(404).json({ message: 'A query parameter of either "id" or "name" must be provided' });
             }
         } else {
             const statuses = await db_statuses.all();
@@ -43,6 +44,7 @@ router.post('/', /* ADMIN-ONLY, */ async (req, res) => {
         res.status(500).json({ error: error.sqlMessage });
     }
 });
+
 
 
 export default router;

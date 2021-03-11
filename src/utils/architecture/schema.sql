@@ -12,7 +12,8 @@ CREATE TABLE Users (
 	created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
-SELECT * FROM Users;
+INSERT INTO Users SET `id` = 'd981e01e-8b68-4f6a-9166-4e7fc479879e', `username` = 'atlc6', `email` = 'test6@test.com', `hashed` = '$argon2id$v=19$m=16384,t=3,p=1$SmdX3GsXbW1H+Zn60PI6TA$UmV+BNHvehoHz6+Uz0urdsW048RyG6rdrzAJ2WI3w3c';
+
 
 DROP TABLE IF EXISTS Categories;
 CREATE TABLE Categories (
@@ -46,7 +47,7 @@ CREATE TABLE Tasks (
     description VARCHAR(512),
     user_id CHAR(36) NOT NULL,
     status_id VARCHAR(36) NOT NULL,
-    complete_by VARCHAR(20),
+    complete_by VARCHAR(20) NOT NULL,
     is_late TINYINT(1) DEFAULT 0,
     is_completed TINYINT(1) DEFAULT 0,
     completed_at VARCHAR(20),

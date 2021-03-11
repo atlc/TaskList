@@ -1,5 +1,4 @@
 import { Router } from 'express';
-const jwtr = require('jwt-redis').default;
 import * as passport from 'passport';
 import { TokenPayload } from '../../../utils/architecture/types';
 import { expire } from '../../../utils/security/tokens';

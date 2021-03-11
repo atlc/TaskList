@@ -7,13 +7,12 @@ import { validate } from '@atlc/hibp';
 const router = Router();
 
 router.post('/', async (req, res) => {
-    const id = uuid();
     const { username, email, password } = req.body;
-
+    
     if (username && email && password) {
         const [usernameIsRegistered] = await users.find('username', username);
         const [emailIsRegistered] = await users.find('email', email);
-
+        
         if (usernameIsRegistered) {
             res.status(401).json({ message: "That username is already registered." });
         } else if (emailIsRegistered) {
@@ -23,6 +22,7 @@ router.post('/', async (req, res) => {
             if (newPassword.isPwned) {
                 res.status(400).json({ message: `Your password was found in ${newPassword.breaches.toLocaleString()} breaches per HaveIBeenPwned.com. Please consider utilizing secure, unique passwords and a password manager application like Bitwarden or Lastpass.` });
             } else {
+                const id = uuid();
                 const hashed = await createHash(password);
                 try {
                     const newUser = await users.register({ id, username, email, hashed });

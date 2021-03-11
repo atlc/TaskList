@@ -17,7 +17,7 @@ export interface Task {
     complete_by: string;
     is_late: boolean;
     is_completed: boolean;
-    completed_at: string;
+    completed_at?: string;
     is_visible: string;
     created_at: string;
     updated_at: string;

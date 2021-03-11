@@ -1,10 +1,12 @@
-import { hash, compare, genSalt } from 'bcrypt';
+import { argon2id, hash, verify } from 'argon2';
 
 export const createHash = async (password: string) => {
-    const salt = await genSalt(12);
-    return hash(password, salt);
+    return hash(password, {
+        type: argon2id,
+        memoryCost: 2 ** 14
+    });
 }
 
 export const validate = async (password: string, hashed: string) => {
-    return compare(password, hashed);
+    return verify(hashed, password);
 }
