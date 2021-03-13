@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "backend:redis": "redis-server",
-    "backend:server": "nodemon src/server/index.ts",
-    "dev": "npm-run-all --parallel backend:*"
+    "prod:redis": "redis-server",
+    "prod:server": "node src/server/index.ts",
+    "start": "npm-run-all --parallel prod:*",
+    "development:redis": "redis-server",
+    "development:server": "nodemon src/server/index.ts",
+    "dev": "npm-run-all --parallel development:*"
   },
   "author": "",
   "license": "ISC",
