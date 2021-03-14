@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prod:redis": "redis-server",
-    "prod:server": "node src/server/index.ts",
+    "prod:server": "ts-node src/server/index.ts",
     "start": "npm-run-all --parallel prod:*",
     "development:redis": "redis-server",
     "development:server": "nodemon src/server/index.ts",
