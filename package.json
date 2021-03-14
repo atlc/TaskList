@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prod:redis": "redis-server",
     "prod:server": "ts-node src/server/index.ts",
     "start": "npm-run-all --parallel prod:*",
     "development:redis": "redis-server",
@@ -44,7 +43,6 @@
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "redis": "^3.0.2",
-    "redis-server": "^1.2.2",
     "sweetalert2": "^10.15.5",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.3",

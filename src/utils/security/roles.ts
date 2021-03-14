@@ -2,7 +2,7 @@ import { RequestHandler } from 'express';
 import * as passport from 'passport';
 import * as redis from 'redis';
 
-const redisClient = redis.createClient();
+const redisClient = redis.createClient(process.env.REDIS_URL);
 
 export const isLoggedIn: RequestHandler = (req, res, next) => {
     passport.authenticate('jwt', async (err, user, info) => {

@@ -3,7 +3,7 @@ import * as jwt from 'jsonwebtoken';
 import { jwt as jwt_conf, redis as redis_conf } from '../../server/config';
 import { TokenPayload } from '../architecture/types';
 
-const redisClient = redis.createClient();
+const redisClient = redis.createClient(process.env.REDIS_URL);
 
 export const signJWT = async (payload: TokenPayload) => {
     const { jti } = payload;
