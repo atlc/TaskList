@@ -35,6 +35,8 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
@@ -44,12 +46,8 @@
     "redis": "^3.0.2",
     "redis-server": "^1.2.2",
     "sweetalert2": "^10.15.5",
-    "uuidv4": "^6.2.6"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.7",
-    "npm-run-all": "^4.1.5",
     "ts-node": "^9.1.1",
-    "typescript": "^4.2.3"
+    "typescript": "^4.2.3",
+    "uuidv4": "^6.2.6"
   }
 }
